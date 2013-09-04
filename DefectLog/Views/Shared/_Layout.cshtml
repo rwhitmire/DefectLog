@@ -36,16 +36,10 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.NavItem("My Account", "Index", "Account", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("Log out", "Logout", new { controller = "Account", area = "" })</li>
                     }
                 </ul>
             </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <p class="navbar-text pull-right nav-collapse collapse">
-                    Signed in as @User.Identity.Name | 
-                    @Html.ActionLink("Log out", "Logout", new { controller = "Account", area = "" })
-                </p>
-            }
             <!--/.nav-collapse -->
         </div>
     </div>
