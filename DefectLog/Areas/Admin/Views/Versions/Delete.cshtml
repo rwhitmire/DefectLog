@@ -1,0 +1,25 @@
+﻿@model DefectLog.Areas.Admin.Forms.AdminAppVersionForm
+
+@{
+    ViewBag.Title = "Delete Version";
+}
+
+<h4>Are you sure you want to delete this version and all related defects?</h4>
+<fieldset>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.VersionNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VersionNumber)
+    </div>
+</fieldset>
+
+<hr />
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        @Html.ActionLink("Back to List", "Index", null, new{@class="btn btn-link"})
+    </p>
+}

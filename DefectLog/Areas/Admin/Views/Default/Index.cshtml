@@ -1,0 +1,49 @@
+﻿@model DefectLog.Areas.Admin.ViewModels.AdminDefaultViewModel
+
+@{
+    ViewBag.Title = "Admin Dashboard";
+}
+
+<div id="app-wrapper" ng-controller="AdminDefaultCtrl" class="hidden">
+    <div ng-hide="users.length == 0">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">New Users</h3>
+            </div>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email Address</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="u in users">
+                        <td>{{u.name}}</td>
+                        <td>{{u.emailAddress}}</td>
+                        <td class="text-right">
+                            <button class="btn btn-sm btn-success" ng-click="approveUser(u.id, true)">approve</button>
+                            <button class="btn btn-sm btn-danger" ng-click="approveUser(u.id, false)">deny</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts {
+    <script>
+        common.dataStore.newUsers = @Model.NewUsers.ToJson();
+    </script>
+
+    <script src="~/Scripts/admin-default.js"></script>
+
+    <script>
+        $('#app-wrapper').show();
+    </script>
+}
