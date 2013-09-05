@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DefectLog.Domain;
 using DefectLog.Models;
 
@@ -25,12 +26,15 @@ namespace DefectLog.Migrations
 
             statuses.ForEach(status => context.Statuses.AddOrUpdate(status));
 
-            var categories = new List<Category>
+            if (!context.Categories.Any())
             {
-                new Category {Id = 1, CategoryName = "Example Category"},
-            };
+                var categories = new List<Category>
+                {
+                    new Category {Id = 1, CategoryName = "Example Category"},
+                };
 
-            categories.ForEach(product => context.Categories.AddOrUpdate(product));
+                categories.ForEach(product => context.Categories.AddOrUpdate(product));
+            }
 
             var priorityLevels = new List<PriorityLevel>
             {
@@ -49,24 +53,27 @@ namespace DefectLog.Migrations
 
             roles.ForEach(role => context.Roles.AddOrUpdate(role));
 
-            var salt = BCrypt.Net.BCrypt.GenerateSalt();
-            var password = BCrypt.Net.BCrypt.HashPassword("password", salt);
-
-            var admin = new User
+            if (!context.Users.Any())
             {
-                Id = 1,
-                UserName = "Admin",
-                EmailAddress = "admin@email.com",
-                FirstName = "Mister",
-                LastName = "Manager",
-                Password = password,
-                PasswordSalt = salt,
-                RoleId = 2,
-                IsApproved = true,
-                IsDeleted = false
-            };
+                var salt = BCrypt.Net.BCrypt.GenerateSalt();
+                var password = BCrypt.Net.BCrypt.HashPassword("password", salt);
 
-            context.Users.AddOrUpdate(admin);
+                var admin = new User
+                {
+                    Id = 1,
+                    UserName = "Admin",
+                    EmailAddress = "admin@email.com",
+                    FirstName = "Mister",
+                    LastName = "Manager",
+                    Password = password,
+                    PasswordSalt = salt,
+                    RoleId = 2,
+                    IsApproved = true,
+                    IsDeleted = false
+                };
+
+                context.Users.AddOrUpdate(admin);
+            }
         }
     }
 }
