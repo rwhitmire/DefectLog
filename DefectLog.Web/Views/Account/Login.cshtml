@@ -1,0 +1,40 @@
+﻿@model DefectLog.Web.Forms.LoginForm
+
+@{
+    ViewBag.Title = "User Login";
+}
+
+@using (Html.BeginForm(new { Model.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div id="login-wrapper">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Defect Log</h3>
+            </div>
+            <div class="panel-body">
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.UserName, new { placeholder = "User Name", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+                <div class="form-group">
+                    @Html.PasswordFor(model => model.Password, new { placeholder = "Password", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+
+                <button type="submit" class="btn btn-large btn-primary btn-block">Sign In</button>
+            </div>
+        </div>
+        <div class="text-center">
+            @Html.ActionLink("Register", "Register") |
+            @Html.ActionLink("Forgot Password", "ForgotPassword")
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

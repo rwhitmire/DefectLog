@@ -1,0 +1,185 @@
+﻿@using DefectLog.Web.Helpers
+@model DefectLog.Web.ViewModels.AppViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-controller="DefectCtrl" ng-cloak>
+    
+    <div ng-show="versionId">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <input class="form-control" ng-model="searchText" type="text" placeholder="search..." />
+            </div>
+            <div class="col-sm-6 form-group">
+                <select class="form-control" ng-model="versionId" ng-change="versionChanged()" ng-options="v.id as v.versionNumber for v in versions"></select>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs filter-tabs">
+            <li class="active">
+                <a data-toggle="tab" ng-click="clearFilter()">All Defects ({{getDefectCount()}})</a>
+            </li>
+            <li ng-repeat="status in statuses">
+                <a data-toggle="tab" ng-click="filterStatus(status)">{{status.name}} ({{getStatusCount(status.id)}})</a>
+            </li>
+        </ul>
+        
+        <div id="defect-table-wrapper">
+            <table id="defect-table" class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Screen</th>
+                        <th>Summary</th>
+                        <th>Priority</th>
+                        <th class="hidden-sm">Date</th>
+                        <th>Tester</th>
+                        <th>Developer</th>
+                        <th class="hidden-sm">Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="defect in defects | filter:statusFilter | filter:searchText" ng-click="defectClicked(defect)" class="{{defect.cssClass}}">
+                        <td>{{defect.id}}</td>
+                        <td>{{defect.screen}}</td>
+                        <td>{{truncate(defect.summary, 40)}}</td>
+                        <td>
+                            <span ng-show="defect.priority == 'High'" class="label label-danger priority">High</span>
+                            <span ng-show="defect.priority != 'High'">{{defect.priority}}</span>
+                        </td>
+                        <td class="hidden-sm">{{defect.dateLogged | date:'yyyy-MM-dd'}}</td>
+                        <td>{{defect.testerName}}</td>
+                        <td>{{defect.developerName}}</td>
+                        <td class="hidden-sm">{{defect.comments.length}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+        <div class="alert alert-success" ng-show="getDefectCount() == 0">
+            <span>No defects have been logged. Go ahead and</span>
+            <a class="alert-link" ng-click="newDefect()">
+                <strong>add one</strong>
+            </a>
+            <span>!</span>
+        </div>
+
+        <div id="scroll-to-form"></div>
+
+        <button ng-click="newDefect()" ng-hide="form" class="btn btn-default">
+            New Defect
+        </button>
+
+        <div class="well" ng-show="form">
+
+            <form ng-submit="saveDefect()" id="defect-form">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" id="status" ng-model="form.statusId" ng-options="s.id as s.name for s in statuses"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tester">Tester</label>
+                            <select class="form-control" id="tester" ng-model="form.testerId" ng-options="u.id as u.name for u in users" required>
+                                <option></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="developer">
+                                <span>Developer</span>
+                                <span>(</span>
+                                <a ng-click="developerMeClicked()">
+                                    pick me
+                                </a>
+                                <span>)</span>
+                            </label>
+                            <select class="form-control" id="developer" ng-model="form.developerId" ng-options="u.id as u.name for u in users">
+                                <option value=""></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="build">Build</label>
+                            <input class="form-control" type="text" id="build" ng-model="form.build" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="screen">Screen</label>
+                            <input class="form-control" type="text" id="screen" name="screen" ng-model="form.screen" required />
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" name="category" class="form-control" id="category" ng-model="form.categoryId" ng-options="c.id as c.categoryName for c in categories" required>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="priority">Priority</label>
+                            <select class="form-control" id="priority" ng-model="form.priorityLevelId" ng-options="l.id as l.priorityName for l in priorityLevels"></select>
+                        </div>
+
+                        <label for="summary">Summary</label>
+                        <textarea rows="6" class="form-control" id="summary" name="summary" type="text" ng-model="form.summary" required></textarea>
+
+                        <hr />
+
+                        <label for="comment">Comments</label>
+
+                        <div ng-repeat="comment in form.comments">
+                            <div class="comment-message">
+                                <span class="bold">{{comment.user.name}}</span>
+                                <span>({{comment.commentDate | date:'M/dd'}})</span>:
+                                <span>{{comment.commentText}}</span>
+                            </div>
+                        </div>
+                        
+                        <div ng-show="form.comments.length == 0" id="no-comment-wrapper">
+                            <span class="label label-info">No comments have been added for this defect.</span>
+                        </div>
+
+                        <textarea id="comment" class="form-control" ng-model="form.comment" placeholder="new comment..."></textarea>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </div>
+                <hr />
+
+                <button type="submit" class="btn btn-success pull-right">
+                    Save Defect
+                </button>
+                <button type="button" ng-click="closeForm()" class="btn btn-danger">
+                    Cancel
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div ng-hide="versionId">
+        <div class="alert alert-danger">
+            No versions have been added. Someone will have to add one through the 
+            @Html.ActionLink("Admin Screen", "Index", new { area = "Admin", controller = "Versions" }, new{@class = "alert-link"})
+        </div>
+    </div>
+
+</div>
+
+
+
+@section scripts {
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script>
+        common.dataStore = @Model.ToJson();
+    </script>
+
+    @Scripts.Render("~/bundles/app")
+}

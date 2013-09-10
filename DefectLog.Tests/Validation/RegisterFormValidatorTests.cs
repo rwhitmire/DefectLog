@@ -1,7 +1,6 @@
-﻿using System.Web.Mvc;
-using DefectLog.Forms;
-using DefectLog.Services;
-using DefectLog.Validation;
+﻿using DefectLog.Core.Services;
+using DefectLog.Web.Forms;
+using DefectLog.Web.Validation;
 using Moq;
 using Xunit;
 

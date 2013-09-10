@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DefectLog.Domain;
-using DefectLog.Models;
-using DefectLog.Services;
+using DefectLog.Core.Domain;
+using DefectLog.Core.Models;
+using DefectLog.Core.Services;
 using Moq;
 using Xunit;
 

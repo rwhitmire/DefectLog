@@ -1,0 +1,11 @@
+﻿@model DefectLog.Web.Areas.Admin.Forms.AdminCategoryForm
+
+@Html.HiddenFor(x => x.Id)
+
+<div class="row">
+    <div class="form-group col-sm-5">
+        @Html.LabelFor(model => model.CategoryName)
+        @Html.EditorFor(model => model.CategoryName)
+        @Html.ValidationMessageFor(model => model.CategoryName)
+    </div>
+</div>

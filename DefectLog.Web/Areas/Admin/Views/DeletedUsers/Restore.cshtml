@@ -1,0 +1,51 @@
+﻿@model DefectLog.Web.Areas.Admin.Forms.AdminUserForm
+
+@{
+    ViewBag.Title = "Restore User";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3 class="panel-title">Restore User</h3>
+    </div>
+    
+    <div class="alert alert-info">
+        Are you sure you want to restore this user?
+    </div>
+    
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.EmailAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmailAddress)
+    </div>
+</div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Restore" class="btn btn-success" />
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-link" })
+    </p>
+}

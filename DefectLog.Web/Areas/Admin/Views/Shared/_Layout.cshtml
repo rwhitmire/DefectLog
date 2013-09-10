@@ -1,0 +1,23 @@
+﻿@using DefectLog.Web.Helpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    @RenderSection("scripts", false)    
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            @Html.ControllerListGroupItem("Dashboard", "Index", "Default")
+            @Html.ControllerListGroupItem("Versions", "Index", "Versions")
+            @Html.ControllerListGroupItem("Categories", "Index", "Categories")
+            @Html.ControllerListGroupItem("Users", "Index", "Users")
+        </div>
+    </div>
+    
+    <div class="col-md-9">
+        @RenderBody()
+    </div>
+</div>

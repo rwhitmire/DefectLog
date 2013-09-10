@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefectLog", "DefectLog\DefectLog.csproj", "{D1269BD6-510B-42B5-857C-9A4D4B41837A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefectLog.Web", "DefectLog.Web\DefectLog.Web.csproj", "{D1269BD6-510B-42B5-857C-9A4D4B41837A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2042E714-09A6-4A73-8D5C-988E20FCDE46}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,6 +13,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefectLog.Tests", "DefectLog.Tests\DefectLog.Tests.csproj", "{7E66FBFA-B00D-4DAB-A599-F582C51074FE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B27F50E2-F68B-4D80-AFE5-4ABCDE0ECA7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefectLog.Core", "DefectLog.Core\DefectLog.Core.csproj", "{DFA707BF-5BDF-4E12-A5A4-65F7E6C24128}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,6 +30,10 @@ Global
 		{7E66FBFA-B00D-4DAB-A599-F582C51074FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E66FBFA-B00D-4DAB-A599-F582C51074FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E66FBFA-B00D-4DAB-A599-F582C51074FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA707BF-5BDF-4E12-A5A4-65F7E6C24128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA707BF-5BDF-4E12-A5A4-65F7E6C24128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA707BF-5BDF-4E12-A5A4-65F7E6C24128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA707BF-5BDF-4E12-A5A4-65F7E6C24128}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

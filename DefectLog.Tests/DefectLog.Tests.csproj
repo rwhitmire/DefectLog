@@ -105,9 +105,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DefectLog\DefectLog.csproj">
+    <ProjectReference Include="..\DefectLog.Core\DefectLog.Core.csproj">
+      <Project>{dfa707bf-5bdf-4e12-a5a4-65f7e6c24128}</Project>
+      <Name>DefectLog.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DefectLog.Web\DefectLog.Web.csproj">
       <Project>{d1269bd6-510b-42b5-857c-9a4d4b41837a}</Project>
-      <Name>DefectLog</Name>
+      <Name>DefectLog.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

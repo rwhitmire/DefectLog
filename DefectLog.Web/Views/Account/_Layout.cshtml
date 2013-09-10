@@ -1,0 +1,22 @@
+﻿@using DefectLog.Web.Helpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    @RenderSection("scripts", false)    
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            @Html.ActionListGroupItem("Dashboard", "Dashboard", "Account")
+            @Html.ActionListGroupItem("Profile", "UserProfile", "Account")
+            @Html.ActionListGroupItem("Change Password", "ChangePassword", "Account")
+        </div>
+    </div>
+    
+    <div class="col-md-9">
+        @RenderBody()
+    </div>
+</div>

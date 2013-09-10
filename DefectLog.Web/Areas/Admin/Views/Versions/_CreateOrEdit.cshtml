@@ -1,0 +1,13 @@
+﻿@model DefectLog.Web.Areas.Admin.Forms.AdminAppVersionForm
+
+@Html.HiddenFor(model => model.Id)
+
+<div class="row">
+    <div class="col-sm-5">
+        <div class="form-group">
+            @Html.LabelFor(model => model.VersionNumber)
+            @Html.EditorFor(model => model.VersionNumber)
+            @Html.ValidationMessageFor(model => model.VersionNumber)
+        </div>
+    </div>
+</div>

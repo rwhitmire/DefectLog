@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using DefectLog.Validation.Framework;
+using DefectLog.Web.Validation.Framework;
 using Xunit;
 
 namespace DefectLog.Tests

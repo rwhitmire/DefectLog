@@ -1,0 +1,27 @@
+﻿@model DefectLog.Web.Areas.Admin.Forms.AdminAppVersionForm
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>New Version</legend>
+
+        @Html.Partial("_CreateOrEdit")
+        
+        <hr />
+
+        <p>
+            <input type="submit" value="Create" class="btn btn-success" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-link" })
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

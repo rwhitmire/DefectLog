@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using DefectLog.Models;
-using DefectLog.ViewModels;
+using DefectLog.Core.Models;
+using DefectLog.Web.App_Start;
+using DefectLog.Web.ViewModels;
 using Xunit;
 
 namespace DefectLog.Tests.Mappers

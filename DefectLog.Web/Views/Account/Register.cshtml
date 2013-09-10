@@ -1,0 +1,66 @@
+﻿@model DefectLog.Web.Forms.RegisterForm
+
+@{
+    ViewBag.Title = "Create an Account";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Please correct the errors before continuing")
+
+    <fieldset>
+        <legend>Create Account</legend>
+
+        <div class="row">
+            <div class="col-sm-5">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName)
+                    @Html.EditorFor(model => model.UserName)
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName)
+                    @Html.EditorFor(model => model.FirstName)
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName)
+                    @Html.EditorFor(model => model.LastName)
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmailAddress)
+                    @Html.EditorFor(model => model.EmailAddress)
+                    @Html.ValidationMessageFor(model => model.EmailAddress)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password)
+                    @Html.EditorFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VerifyPassword)
+                    @Html.EditorFor(model => model.VerifyPassword)
+                    @Html.ValidationMessageFor(model => model.VerifyPassword)
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <p>
+            <input type="submit" value="Create Account" class="btn btn-success" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,29 @@
+﻿@model DefectLog.Core.Models.Category
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<fieldset>
+    <legend>Delete Category</legend>
+
+    <div class="alert alert-danger">All defects logged under this category will be removed.</div>
+
+    <div class="display-label">
+        Category Name
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryName)
+    </div>
+</fieldset>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete Category" class="btn btn-danger" />
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-link" })
+    </p>
+}

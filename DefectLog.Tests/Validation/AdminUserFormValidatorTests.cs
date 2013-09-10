@@ -1,6 +1,6 @@
-﻿using DefectLog.Areas.Admin.Forms;
-using DefectLog.Services;
-using DefectLog.Validation;
+﻿using DefectLog.Core.Services;
+using DefectLog.Web.Areas.Admin.Forms;
+using DefectLog.Web.Validation;
 using Moq;
 using Xunit;
 
