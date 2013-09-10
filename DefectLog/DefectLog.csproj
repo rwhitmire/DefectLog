@@ -68,9 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Glimpse.1.6.0\lib\net45\Glimpse.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Glimpse.EF5, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Glimpse.EF5, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Glimpse.EF5.1.3.1\lib\net45\Glimpse.EF5.dll</HintPath>
+      <HintPath>..\packages\Glimpse.EF5.1.4.0\lib\net45\Glimpse.EF5.dll</HintPath>
     </Reference>
     <Reference Include="Glimpse.Mvc4, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -286,10 +286,6 @@
     <Compile Include="ViewModels\VersionListItem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\bootstrap-theme.css" />
-    <Content Include="Content\css\bootstrap-theme.min.css">
-      <DependentUpon>bootstrap-theme.css</DependentUpon>
-    </Content>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
@@ -479,6 +475,10 @@
     <EmbeddedResource Include="Migrations\1.0\201309040157077_Initialize.resx">
       <DependentUpon>201309040157077_Initialize.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\deflog-stage - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\deflog-stage - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

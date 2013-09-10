@@ -22,9 +22,7 @@ namespace DefectLog
 
             bundles.Add(new StyleBundle("~/content/css/css").Include(
                 "~/content/css/bootstrap.css",
-                "~/content/css/bootstrap-theme.css",
-                "~/content/css/site.css",
-                "~/content/css/bootstrap-responsive.css"));
+                "~/content/css/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                 "~/Scripts/jquery.unobtrusive*",
