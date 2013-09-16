@@ -21,6 +21,7 @@ namespace DefectLog.Web.ViewModels
         public string Priority { get; set; }
         public int PriorityLevelId { get; set; }
         public int? CategoryId { get; set; }
+        public string CategoryName { get; set; }
 
         public IEnumerable<CommentListItem> Comments { get; set; }
     }

@@ -37,14 +37,14 @@
                         <th class="hidden-sm">Date</th>
                         <th>Tester</th>
                         <th>Developer</th>
-                        <th class="hidden-sm">Comments</th>
+                        <th class="hidden-sm">Category</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="defect in defects | filter:statusFilter | filter:searchText" ng-click="defectClicked(defect)" class="{{defect.cssClass}}">
                         <td>{{defect.id}}</td>
                         <td>{{defect.screen}}</td>
-                        <td>{{truncate(defect.summary, 40)}}</td>
+                        <td title="{{defect.summary}}">{{truncate(defect.summary, 40)}}</td>
                         <td>
                             <span ng-show="defect.priority == 'High'" class="label label-danger priority">High</span>
                             <span ng-show="defect.priority != 'High'">{{defect.priority}}</span>
@@ -52,7 +52,7 @@
                         <td class="hidden-sm">{{defect.dateLogged | date:'yyyy-MM-dd'}}</td>
                         <td>{{defect.testerName}}</td>
                         <td>{{defect.developerName}}</td>
-                        <td class="hidden-sm">{{defect.comments.length}}</td>
+                        <td class="hidden-sm">{{defect.categoryName}}</td>
                     </tr>
                 </tbody>
             </table>

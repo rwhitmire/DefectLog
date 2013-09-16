@@ -17,7 +17,8 @@ namespace DefectLog.Web.App_Start
                     .ForMember(dest => dest.DeveloperName, opt => opt.MapFrom(src => FormatAbbrevName(src.Developer.FirstName, src.Developer.LastName)))
                     .ForMember(dest => dest.TesterName, opt => opt.MapFrom(src => FormatAbbrevName(src.Tester.FirstName, src.Tester.LastName)))
                     .ForMember(dest => dest.CssClass, opt => opt.MapFrom(src => src.Status.CssClass))
-                    .ForMember(dest => dest.Priority, opt => opt.MapFrom(src => src.PriorityLevel.PriorityName));
+                    .ForMember(dest => dest.Priority, opt => opt.MapFrom(src => src.PriorityLevel.PriorityName))
+                    .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName));
 
                 cfg.CreateMap<User, UserListItem>()
                     .ForMember(dest => dest.Name, opt => opt.MapFrom(src => FormatProperName(src.FirstName, src.LastName)));

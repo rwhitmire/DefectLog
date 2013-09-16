@@ -25,6 +25,7 @@ namespace DefectLog.Web.Controllers
         public IEnumerable<DefectListItem> GetDefects(int versionId)
         {
             var defects = _defectService.GetAll(versionId)
+                .Include(x => x.Category)
                 .Include(x => x.Status)
                 .Include(x => x.Comments)
                 .Include(x => x.Tester)
